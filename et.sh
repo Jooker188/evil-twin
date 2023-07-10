@@ -194,7 +194,13 @@ configure_dnsmasq(){
 
 configure_routing(){
     echo "Configuration du routage ip ..."
+
+    # Mode routeur du PC
+    sudo sysctl net.ipv4.ip_forward=1
     
+    # Attribution d'une IP Evil Twin
+    #sudo ip addr add 192.168.3.1/24 dev $AP
+
     #ajout de la gateway a l'interface
     ifconfig $interface 192.168.1.1 netmask 255.255.255.0
     
