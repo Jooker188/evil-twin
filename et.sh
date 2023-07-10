@@ -238,7 +238,7 @@ sniff_traffic(){
     mkdir $client_folder
 
     #Sniffing des paquets avec tcpdump
-    tcpdump -i $interface port 80 -w $client_folder/captured_packets.pcap
+    xterm -hold -e "tcpdump -i $interface port 80 -w $client_folder/captured_packets.pcap"
 }
 
 display_intro() {
@@ -277,18 +277,18 @@ display_intro() {
 main(){
     install_requirements
     create_folder
-	select_interface
-	kill_processes
-	start_monitor
-	start_scan 
+    select_interface
+    kill_processes
+    start_monitor
+    start_scan 
     select_network
     configure_hostapd
     configure_dnsmasq
     configure_routing
     run_services
-    #ddos_stations
     sniff_traffic
-	clear_all
+    #ddos_stations
+    clear_all
 }
 
 ##################################################
